@@ -1,25 +1,30 @@
-# dtimer
+# node-redis-distributed-timer
 
-[![NPM version](https://badge.fury.io/js/dtimer.svg)](http://badge.fury.io/js/dtimer)
-[![Build Status](https://travis-ci.org/enobufs/dtimer.svg?branch=master)](https://travis-ci.org/enobufs/dtimer) 
-[![Coverage Status](https://coveralls.io/repos/enobufs/dtimer/badge.png?branch=master)](https://coveralls.io/r/enobufs/dtimer?branch=master)
+[![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
+[![Build Status](https://travis-ci.org/DanieleSalatti/node-redis-distributed-timer.svg?branch=master)](https://travis-ci.org/github/DanieleSalatti/node-redis-distributed-timer) 
+[![Coverage Status](https://coveralls.io/repos/github/DanieleSalatti/node-redis-distributed-timer/badge.svg?branch=master)](https://coveralls.io/github/DanieleSalatti/node-redis-distributed-timer?branch=master)
 
-Distributed timer backed by Redis.
+Distributed timer backed by Redis
 
-## Why dtimer?
+This is a fork of [dtimer](https://github.com/enobufs/dtimer)
+
+All dependencies have been upgraded to latest version. Some requirements may be made more lax in the future (e.g. minimum Redis version, minimum node/npm version). Do not use in production. Pull requests welcome.
+
+## Why node-redis-distributed-timer?
 In a clustered server environment, you'd occasionally need to process a task after a certain period of time. The setTimeout() may not be suitable because the process may die for whatever reason, the timed events would also be lost. Ideally, you'd want to store these timed events on a central storage, then have a cluster of listeners handle the due events. If you are already using Redis, then this dtimer would be a handy solution for you.
 
 ## Installation
-    $ npm install dtimer
+    $ npm install node-redis-distributed-timer
 
 ## Features
-* Timed event emitter and listener across cluster using Redis.
-* Supports one or more event listeners across cluster. (round robin)
-* Pubsub based event notification (low delay and low network bandwidth usage.)
+* Timed event emitter and listener across cluster using Redis
+* Supports one or more event listeners across cluster (round robin)
+* Pubsub based event notification (low delay and low network bandwidth usage)
 
 ## Requirements
-* Requires Redis version 2.6.0 or later (dtimer uses lua)
+* Requires Redis version 3.0.0 or later (node-redis-distributed-timer uses lua)
 * The redis module MUST be promisified at module level in advance, even legacy callback style is used.
+
 ```js
 var Promise = require('bluebird');
 var redis = Promise.promisifyAll(require('redis'));
@@ -28,6 +33,7 @@ var redis = Promise.promisifyAll(require('redis'));
 ## API
 
 ### Class / Constructor
+
 #### DTimer(id, pub, sub, [option]) - Inherits EventEmitter.
 * {string} id - Unique ID representing this node.
 * {RedisClient} pub - Redis client (main operation)
