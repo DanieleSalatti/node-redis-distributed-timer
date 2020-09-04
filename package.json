@@ -4,8 +4,9 @@
   "description": "Distributed timer backed by Redis",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG=true nyc mocha --exit",
-    "posttest": "eslint lib test; nyc check-coverage; nyc report --reporter=text-lcov",
+    "test": "nyc --reporter=html --reporter=text mocha --exit",
+    "posttest": "eslint lib test; nyc check-coverage",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint lib test"
   },
   "repository": {
