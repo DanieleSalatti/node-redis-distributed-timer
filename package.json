@@ -4,8 +4,8 @@
   "description": "Distributed timer backed by Redis.",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG=dtimer istanbul cover _mocha",
-    "posttest": "eslint lib test; istanbul check-coverage",
+    "test": "DEBUG=true nyc mocha --exit",
+    "posttest": "eslint lib test; nyc check-coverage",
     "lint": "eslint lib test"
   },
   "repository": {
@@ -13,20 +13,20 @@
     "url": "git://github.com/enobufs/dtimer.git"
   },
   "dependencies": {
-    "bluebird": "^3.1.1",
-    "debug": "~2.6.9",
-    "lured": "~0.0.2",
-    "redis": "~0.12.1",
-    "underscore": "~1.6.0",
-    "uuid": "^2.0.1"
+    "bluebird": "^3.7.2",
+    "debug": "~4.1.1",
+    "lured": "~1.0.3",
+    "redis": "~3.0.2",
+    "underscore": "~1.11.0",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "async": "~0.9.0",
-    "coveralls": "~2.13.3",
-    "eslint": "^1.10.3",
-    "istanbul": "~0.3.0",
-    "mocha": "~1.21.0",
-    "sinon": "~1.10.3"
+    "async": "~3.2.0",
+    "coveralls": "~3.1.0",
+    "eslint": "^7.8.1",
+    "nyc": "^15.1.0",
+    "mocha": "~8.1.3",
+    "sinon": "~9.0.3"
   },
   "keywords": [
     "timer",

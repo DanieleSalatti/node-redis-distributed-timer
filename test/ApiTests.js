@@ -7,11 +7,11 @@ var Promise = require('bluebird');
 var redis = Promise.promisifyAll(require("redis"));
 
 describe('ApiTests', function () {
-    var sandbox = sinon.sandbox.create();
+    var sandbox = sinon.createSandbox();
     var clock;
 
     before(function () {
-        sandbox = sinon.sandbox.create();
+        sandbox = sinon.createSandbox();
     });
 
     beforeEach(function () {
@@ -86,7 +86,7 @@ describe('ApiTests', function () {
     });
 
     it('emits error when lured.load() fails', function (done) {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) {
@@ -105,7 +105,7 @@ describe('ApiTests', function () {
     });
 
     it('Detect malformed message on subscribe', function (done) {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); }
@@ -121,7 +121,7 @@ describe('ApiTests', function () {
     });
 
     it('Ignore invalid interval in pubsub message', function () {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); }
@@ -137,7 +137,7 @@ describe('ApiTests', function () {
     });
 
     it('join() should fail without sub', function (done) {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); }
@@ -152,7 +152,7 @@ describe('ApiTests', function () {
     });
 
     it('leave() should fail without sub', function (done) {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); }
@@ -167,7 +167,7 @@ describe('ApiTests', function () {
     });
 
     it('Attempts to post non-object event should throw', function () {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); },
@@ -187,7 +187,7 @@ describe('ApiTests', function () {
     });
 
     it('Attempts to post with invalid event ID should throw', function () {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); },
@@ -202,7 +202,7 @@ describe('ApiTests', function () {
     });
 
     it('Attempts to post with invalid maxRetries should throw', function () {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); },
@@ -217,7 +217,7 @@ describe('ApiTests', function () {
     });
 
     it('Attempts to post with delay of type string should throw', function () {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); },
@@ -232,7 +232,7 @@ describe('ApiTests', function () {
     });
 
     it('Attempts to changeDelay with delay of type string should throw', function () {
-        sandbox.stub(require('lured'), 'create', function () {
+        sandbox.stub(require('lured'), 'create').callsFake(function () {
             return {
                 on: function () {},
                 load: function (cb) { process.nextTick(cb); },

@@ -11,6 +11,7 @@ describe('Single node', function () {
     var pub = null;
     var sub = null;
     var dt  = null;
+    this.timeout(5000);
 
     before(function () {
     });
@@ -22,9 +23,13 @@ describe('Single node', function () {
         sub = redis.createClient();
         sub.once('ready', function () { conns++; });
         async.whilst(
-            function () { return (conns < 2); },
-            function (next) {
-                setTimeout(next, 100);
+            function test(cb) { 
+                cb(null, conns < 2); 
+            },
+            function iter(callback) {
+                setTimeout(function() {
+                    callback(null, conns);
+                }, 100);
             },
             function (err) {
                 if (err) {
@@ -47,14 +52,20 @@ describe('Single node', function () {
     });
 
     afterEach(function () {
-        dt.removeAllListeners();
-        dt = null;
-        pub.removeAllListeners();
-        pub.end();
-        pub = null;
-        sub.removeAllListeners();
-        sub.end();
-        sub = null;
+        if (dt != null) {
+            dt.removeAllListeners();
+            dt = null;
+        }
+        if (pub != null) {
+            pub.removeAllListeners();
+            pub.end(true);
+            pub = null;
+        }
+        if (sub != null) {
+            sub.removeAllListeners();
+            sub.end(true);
+            sub = null;
+        }
     });
 
     it('Post and receive one event', function (done) {
@@ -494,9 +505,6 @@ describe('Single node', function () {
     });
 
     describe('#upcoming', function () {
-        beforeEach(function (done) {
-            dt.join(done);
-        });
 
         function post3events(ev1, ev2, ev3, ids, cb) {
             async.series([

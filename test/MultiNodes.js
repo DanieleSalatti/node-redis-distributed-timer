@@ -9,6 +9,7 @@ var redis = Promise.promisifyAll(require("redis"));
 describe('Multiple nodes', function () {
     var numNodes = 8;
     var nodes;
+    this.timeout(5000);
 
     before(function () {
     });
@@ -33,22 +34,30 @@ describe('Multiple nodes', function () {
                     node.pub.select(9, next);
                 }
             ], function (err) {
-                if (err) { return void(cb(err)); }
+                if (err) { 
+                    return void(cb(err)); 
+                }
                 node.dt = new DTimer('ch' + id, node.pub, node.sub);
-                setTimeout(function () { cb(null, node); }, 100);
+                setTimeout(function () { 
+                    cb(null, node); 
+                }, 100);
             });
         }
 
         async.whilst(
-            function () { return (nodes.length < numNodes); },
-            function (next) {
+            function test(cb) { 
+                cb(null, nodes.length < numNodes); 
+            },
+            function iter(callback) {
                 prepareNode(nodes.length, function (err, node) {
-                    if (err) { return void(next(err)); }
+                    if (err) { 
+                        return void(next(err)); 
+                    }
                     nodes.push(node);
-                    next();
+                    callback(null, nodes);
                 });
             },
-            function (err) {
+            function (err, n) {
                 if (err) {
                     return void(done(err));
                 }
@@ -62,10 +71,10 @@ describe('Multiple nodes', function () {
             node.dt.removeAllListeners();
             node.dt = null;
             node.pub.removeAllListeners();
-            node.pub.end();
+            node.pub.end(true);
             node.pub = null;
             node.sub.removeAllListeners();
-            node.sub.end();
+            node.sub.end(true);
             node.sub = null;
         });
         nodes = [];
