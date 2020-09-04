@@ -23,11 +23,11 @@ describe('Single node', function () {
         sub = redis.createClient();
         sub.once('ready', function () { conns++; });
         async.whilst(
-            function test(cb) { 
-                cb(null, conns < 2); 
+            function test(cb) {
+                cb(null, conns < 2);
             },
             function iter(callback) {
-                setTimeout(function() {
+                setTimeout(function () {
                     callback(null, conns);
                 }, 100);
             },

@@ -26,15 +26,15 @@ describe('Error tests', function () {
         sub.once('ready', function () { conns++; });
 
         async.whilst(
-            function test(cb) { 
-                cb(null, conns < 2); 
+            function test(cb) {
+                cb(null, conns < 2);
             },
             function iter(callback) {
-                setTimeout(function() {
+                setTimeout(function () {
                     callback(null, conns);
                 }, 500);
             },
-            function (err, n) {
+            function (err) {
                 if (err) {
                     return void(done(err));
                 }
@@ -46,8 +46,8 @@ describe('Error tests', function () {
                         pub.flushdb(next);
                     }
                 ], function (err) {
-                    if (err) { 
-                        return void(done(err)); 
+                    if (err) {
+                        return void(done(err));
                     }
                     dt = new DTimer('ch1', pub, sub);
                     setTimeout(done, 100); // wait loading to complete
@@ -300,7 +300,7 @@ describe('Error tests', function () {
     });
 
     describe('#upcoming', function () {
-    
+
         it('force _redisTime return error', function (done) {
             sandbox.stub(dt, '_redisTime').callsFake(function (c) {
                 void(c);

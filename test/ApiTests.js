@@ -33,7 +33,7 @@ describe('ApiTests', function () {
         function (err) {
             return (err instanceof Error);
         },
-            "unexpected error"
+        "unexpected error"
         );
     });
 
@@ -48,7 +48,7 @@ describe('ApiTests', function () {
             function (err) {
                 return (err instanceof Error);
             },
-                "unexpected error"
+            "unexpected error"
             );
         }
         // Should not be undefined
@@ -182,7 +182,7 @@ describe('ApiTests', function () {
         function (err) {
             return (err instanceof Error);
         },
-            "unexpected error"
+        "unexpected error"
         );
     });
 

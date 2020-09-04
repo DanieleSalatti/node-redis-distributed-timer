@@ -34,30 +34,30 @@ describe('Multiple nodes', function () {
                     node.pub.select(9, next);
                 }
             ], function (err) {
-                if (err) { 
-                    return void(cb(err)); 
+                if (err) {
+                    return void(cb(err));
                 }
                 node.dt = new DTimer('ch' + id, node.pub, node.sub);
-                setTimeout(function () { 
-                    cb(null, node); 
+                setTimeout(function () {
+                    cb(null, node);
                 }, 100);
             });
         }
 
         async.whilst(
-            function test(cb) { 
-                cb(null, nodes.length < numNodes); 
+            function test(cb) {
+                cb(null, nodes.length < numNodes);
             },
             function iter(callback) {
                 prepareNode(nodes.length, function (err, node) {
-                    if (err) { 
-                        return void(next(err)); 
+                    if (err) {
+                        return void(done(err));
                     }
                     nodes.push(node);
                     callback(null, nodes);
                 });
             },
-            function (err, n) {
+            function (err) {
                 if (err) {
                     return void(done(err));
                 }

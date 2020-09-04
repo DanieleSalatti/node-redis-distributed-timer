@@ -6,7 +6,7 @@
   "scripts": {
     "test": "DEBUG=true nyc mocha --exit",
     "posttest": "eslint lib test; nyc check-coverage",
-    "lint": "eslint lib test"
+    "lint": "eslint lib test --fix"
   },
   "repository": {
     "type": "git",
@@ -112,9 +112,8 @@
         2,
         "always"
       ],
-      "space-after-keywords": [
-        2,
-        "always"
+      "keyword-spacing": [
+        2
       ],
       "space-before-function-paren": [
         2,
@@ -122,8 +121,7 @@
           "anonymous": "always",
           "named": "never"
         }
-      ],
-      "space-return-throw-case": 2
+      ]
     },
     "env": {
       "node": true,
