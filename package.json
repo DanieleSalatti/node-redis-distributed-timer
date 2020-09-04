@@ -1,16 +1,16 @@
 {
-  "name": "dtimer",
-  "version": "0.3.3",
-  "description": "Distributed timer backed by Redis.",
+  "name": "node-redis-distributed-timer",
+  "version": "0.0.1",
+  "description": "Distributed timer backed by Redis",
   "main": "index.js",
   "scripts": {
     "test": "DEBUG=true nyc mocha --exit",
-    "posttest": "eslint lib test; nyc check-coverage",
-    "lint": "eslint lib test --fix"
+    "posttest": "eslint lib test; nyc check-coverage; nyc report --reporter=text-lcov",
+    "lint": "eslint lib test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/enobufs/dtimer.git"
+    "url": "git://github.com/DanieleSalatti/node-redis-distributed-timer.git"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
@@ -36,12 +36,12 @@
     "cluster",
     "redis"
   ],
-  "author": "enobufs",
+  "author": "Daniele Salatti",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/enobufs/dtimer/issues"
+    "url": "https://github.com/DanieleSalatti/node-redis-distributed-timer/issues"
   },
-  "homepage": "https://github.com/enobufs/dtimer",
+  "homepage": "https://github.com/DanieleSalatti/node-redis-distributed-timer",
   "eslintConfig": {
     "rules": {
       "callback-return": [
