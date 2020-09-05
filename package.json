@@ -1,6 +1,6 @@
 {
   "name": "@DanieleSalatti/node-redis-distributed-timer",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Distributed timer backed by Redis",
   "main": "index.js",
   "scripts": {
