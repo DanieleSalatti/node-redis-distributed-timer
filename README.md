@@ -192,7 +192,7 @@ The handler will be called with the following argument:
 ## Example
 
 ```js
-var DTimer = require('dtimer').DTimer;
+var DTimer = require('@danielesalatti/node-redis-distributed-timer').DTimer;
 var Promise = require('bluebird');
 var redis = Promise.promisifyAll(require('redis')); // module level promisification
 var pub = redis.createClient();
