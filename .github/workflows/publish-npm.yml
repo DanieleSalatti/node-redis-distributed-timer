@@ -10,7 +10,7 @@ jobs:
     # Setup .npmrc file to publish to npm
     - uses: actions/setup-node@v1
       with:
-        node-version: '10.x'
+        node-version: '14.x'
         registry-url: 'https://registry.npmjs.org'
     - run: npm install
     # Publish to npm
@@ -26,4 +26,4 @@ jobs:
     # Publish to GitHub Packages
     - run: npm publish
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
