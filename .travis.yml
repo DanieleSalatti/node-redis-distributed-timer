@@ -11,5 +11,6 @@ deploy:
    provider: npm
    edge: true # opt in to dpl v2
    email: danielesalatti@gmail.com
+   access: public
    on:
     tags: true
