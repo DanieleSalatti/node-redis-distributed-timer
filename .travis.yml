@@ -7,3 +7,9 @@ script:
   - npm test
 after_success: 
   - npm run coverage
+deploy:
+   provider: npm
+   edge: true # opt in to dpl v2
+   email: danielesalatti@gmail.com
+   on:
+    tags: true

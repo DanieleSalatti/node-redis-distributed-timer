@@ -3,6 +3,9 @@
   "version": "0.0.5",
   "description": "Distributed timer backed by Redis",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha --exit",
     "posttest": "eslint lib test; nyc check-coverage",
