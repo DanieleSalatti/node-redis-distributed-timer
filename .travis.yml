@@ -8,9 +8,16 @@ script:
 after_success: 
   - npm run coverage
 deploy:
-   provider: npm
-   edge: true # opt in to dpl v2
-   email: danielesalatti@gmail.com
-   access: public
-   on:
-    tags: true
+  - provider: npm
+    edge: true # opt in to dpl v2
+    email: danielesalatti@gmail.com
+    access: public
+    on:
+      tags: true
+  - provider: npm
+    edge: true # opt in to dpl v2
+    email: danielesalatti@gmail.com
+    access: public
+    registry: https://npm.pkg.github.com/DanieleSalatti
+    on:
+      tags: true
