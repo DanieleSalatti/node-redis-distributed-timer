@@ -1,6 +1,7 @@
 # node-redis-distributed-timer
 
 [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
+[![npm version](https://badge.fury.io/js/%40danielesalatti%2Fnode-redis-distributed-timer.svg)](https://badge.fury.io/js/%40danielesalatti%2Fnode-redis-distributed-timer)
 [![Build Status](https://travis-ci.org/DanieleSalatti/node-redis-distributed-timer.svg?branch=master)](https://travis-ci.org/github/DanieleSalatti/node-redis-distributed-timer) 
 [![Coverage Status](https://coveralls.io/repos/github/DanieleSalatti/node-redis-distributed-timer/badge.svg?branch=master)](https://coveralls.io/github/DanieleSalatti/node-redis-distributed-timer?branch=master)
 
