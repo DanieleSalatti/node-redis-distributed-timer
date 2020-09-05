@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "Distributed timer backed by Redis",
   "main": "index.js",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha --exit",
     "posttest": "eslint lib test; nyc check-coverage",
