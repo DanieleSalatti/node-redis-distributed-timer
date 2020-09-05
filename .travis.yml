@@ -18,6 +18,7 @@ deploy:
     edge: true # opt in to dpl v2
     email: danielesalatti@gmail.com
     access: public
+    api_token: ${GITHUB_TOKEN}
     registry: https://npm.pkg.github.com/DanieleSalatti
     on:
       tags: true
